@@ -1,22 +1,9 @@
-#version 430
+#version 400 core
 
-layout(location = 0) in vec3 position;
-layout(location = 1) in vec3 normal;
-layout(location = 2) in vec3 texcoord;
+in vec3 position;
+out vec3 color;
 
-out vec3 o_position;
-out vec3 o_normal;
-out vec2 o_texcoord;
-	
-uniform mat4 world;
-uniform mat4 viewProj;
-uniform mat3 normalMatrix;
-	
-void main()
-{
-	o_position = vec3(world * vec4(position, 1.0f));
-    o_normal   = normalMatrix * normal;
-    o_texcoord = texcoord.xy;
-	
-    gl_Position = viewProj * world * vec4(position, 1.0f);
+void main(){
+    gl_Position=vec4(position,1.0);
+    color=vec3(position.x+0.5,1.0,position.y+0.5);
 }

@@ -30,6 +30,9 @@ add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
 		src/Engine/renderer/Renderer.cpp
 		src/Engine/renderer/Renderer.h
 		src/starlight.h
+		src/Engine/shaders/ShaderProgram.cpp
+		src/Engine/shaders/ShaderProgram.h
+		src/Engine/shaders/ShaderProgram.h
 )
 
 # We need a CMAKE_DIR with some code to find external dependencies
