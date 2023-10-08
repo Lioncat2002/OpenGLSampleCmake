@@ -30,6 +30,7 @@ int init(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,true);
 
     window= glfwCreateWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"game", nullptr, nullptr);
 
@@ -64,6 +65,7 @@ int load(){
 int render(){
     renderer->prepare();
     renderer->render(model);
+    std::cout<<glGetError()<<"\n";
     return true;
 }
 int update(){
