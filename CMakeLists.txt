@@ -1,7 +1,7 @@
 # Copyright (C) 2018 Tomasz Gałaj
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
-project(OpenGLExample)
+project(Starlight)
 
 # Add .lib files
 link_directories(${CMAKE_SOURCE_DIR}/lib)
@@ -21,7 +21,16 @@ configure_file(src/helpers/RootDir.h.in src/helpers/RootDir.h)
 include_directories(${CMAKE_BINARY_DIR}/src)
 	
 # Define the executable
-add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
+        src/main.cpp
+		src/Engine/renderer/RawModel.cpp
+		src/Engine/renderer/RawModel.h
+		src/Engine/renderer/Loader.cpp
+		src/Engine/renderer/Loader.h
+		src/Engine/renderer/Renderer.cpp
+		src/Engine/renderer/Renderer.h
+		src/starlight.h
+)
 
 # We need a CMAKE_DIR with some code to find external dependencies
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")

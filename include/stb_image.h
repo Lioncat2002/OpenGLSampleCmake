@@ -1,4 +1,4 @@
-/* stb_image - v2.19 - public domain image loader - http://nothings.org/stb
+/* stb_image - v2.19 - public domain image Loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk
 
    Do this:
@@ -128,7 +128,7 @@ RECENT REVISION HISTORY:
 //    int *channels_in_file  -- outputs # of image components in image file
 //    int desired_channels   -- if non-zero, # of image components requested in result
 //
-// The return value from an image loader is an 'unsigned char *' which points
+// The return value from an image Loader is an 'unsigned char *' which points
 // to the pixel data, or NULL on an allocation failure or if the image is
 // corrupt or invalid. The pixel data consists of *y scanlines of *x pixels,
 // with each pixel consisting of N interleaved 8-bit components; the first
@@ -5648,7 +5648,7 @@ static void *stbi__tga_load(stbi__context *s, int *x, int *y, int *comp, int req
 #endif
 
 // *************************************************************************************************
-// Photoshop PSD loader -- PD by Thatcher Ulrich, integration by Nicolas Schulz, tweaked by STB
+// Photoshop PSD Loader -- PD by Thatcher Ulrich, integration by Nicolas Schulz, tweaked by STB
 
 #ifndef STBI_NO_PSD
 static int stbi__psd_test(stbi__context *s)
@@ -5896,7 +5896,7 @@ static void *stbi__psd_load(stbi__context *s, int *x, int *y, int *comp, int req
 #endif
 
 // *************************************************************************************************
-// Softimage PIC loader
+// Softimage PIC Loader
 // by Tom Seddon
 //
 // See http://softimage.wiki.softimage.com/index.php/INFO:_PIC_file_format
@@ -6112,7 +6112,7 @@ static int stbi__pic_test(stbi__context *s)
 #endif
 
 // *************************************************************************************************
-// GIF loader -- public domain by Jean-Marc Lienher -- simplified/shrunk by stb
+// GIF Loader -- public domain by Jean-Marc Lienher -- simplified/shrunk by stb
 
 #ifndef STBI_NO_GIF
 typedef struct
@@ -6592,7 +6592,7 @@ static int stbi__gif_info(stbi__context *s, int *x, int *y, int *comp)
 #endif
 
 // *************************************************************************************************
-// Radiance RGBE HDR loader
+// Radiance RGBE HDR Loader
 // originally by Nicolas Schulz
 #ifndef STBI_NO_HDR
 static int stbi__hdr_test_core(stbi__context *s, const char *signature)
@@ -6981,7 +6981,7 @@ static int stbi__pic_info(stbi__context *s, int *x, int *y, int *comp)
 #endif
 
 // *************************************************************************************************
-// Portable Gray Map and Portable Pixel Map loader
+// Portable Gray Map and Portable Pixel Map Loader
 // by Ken Miller
 //
 // PGM: http://netpbm.sourceforge.net/doc/pgm.html
@@ -7393,7 +7393,7 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const *c, void *user
               fix bug: the stbi__bmp_load() and stbi__tga_load() functions didn't work at all
       1.00    interface to zlib that skips zlib header
       0.99    correct handling of alpha in palette
-      0.98    TGA loader by lonesock; dynamically add loaders (untested)
+      0.98    TGA Loader by lonesock; dynamically add loaders (untested)
       0.97    jpeg errors on too large a file; also catch another malloc failure
       0.96    fix detection of invalid v value - particleman@mollyrocket forum
       0.95    during header scan, seek to markers in case of padding

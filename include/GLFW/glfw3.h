@@ -4022,12 +4022,12 @@ GLFWAPI int glfwExtensionSupported(const char* extension);
  */
 GLFWAPI GLFWglproc glfwGetProcAddress(const char* procname);
 
-/*! @brief Returns whether the Vulkan loader has been found.
+/*! @brief Returns whether the Vulkan Loader has been found.
  *
- *  This function returns whether the Vulkan loader has been found.  This check
+ *  This function returns whether the Vulkan Loader has been found.  This check
  *  is performed by @ref glfwInit.
  *
- *  The availability of a Vulkan loader does not by itself guarantee that window
+ *  The availability of a Vulkan Loader does not by itself guarantee that window
  *  surface creation or even device creation is possible.  Call @ref
  *  glfwGetRequiredInstanceExtensions to check whether the extensions necessary
  *  for Vulkan surface creation are available and @ref
@@ -4098,7 +4098,7 @@ GLFWAPI const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
  *
  *  This function returns the address of the specified Vulkan core or extension
  *  function for the specified instance.  If instance is set to `NULL` it can
- *  return any function exported from the Vulkan loader, including at least the
+ *  return any function exported from the Vulkan Loader, including at least the
  *  following functions:
  *
  *  - `vkEnumerateInstanceExtensionProperties`
@@ -4111,7 +4111,7 @@ GLFWAPI const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
  *  to check whether Vulkan is available.
  *
  *  This function is equivalent to calling `vkGetInstanceProcAddr` with
- *  a platform-specific query of the Vulkan loader as a fallback.
+ *  a platform-specific query of the Vulkan Loader as a fallback.
  *
  *  @param[in] instance The Vulkan instance to query, or `NULL` to retrieve
  *  functions related to instance creation.
@@ -4172,9 +4172,9 @@ GLFWAPI int glfwGetPhysicalDevicePresentationSupport(VkInstance instance, VkPhys
  *
  *  This function creates a Vulkan surface for the specified window.
  *
- *  If the Vulkan loader was not found at initialization, this function returns
+ *  If the Vulkan Loader was not found at initialization, this function returns
  *  `VK_ERROR_INITIALIZATION_FAILED` and generates a @ref GLFW_API_UNAVAILABLE
- *  error.  Call @ref glfwVulkanSupported to check whether the Vulkan loader was
+ *  error.  Call @ref glfwVulkanSupported to check whether the Vulkan Loader was
  *  found.
  *
  *  If the required window surface creation instance extensions are not
