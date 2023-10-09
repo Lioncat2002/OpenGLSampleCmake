@@ -23,8 +23,8 @@ include_directories(${CMAKE_BINARY_DIR}/src)
 # Define the executable
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
         src/main.cpp
-		src/Engine/renderer/RawModel.cpp
-		src/Engine/renderer/RawModel.h
+		src/Engine/models/RawModel.cpp
+		src/Engine/models/RawModel.h
 		src/Engine/renderer/Loader.cpp
 		src/Engine/renderer/Loader.h
 		src/Engine/renderer/Renderer.cpp
@@ -33,6 +33,14 @@ add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
 		src/Engine/shaders/ShaderProgram.cpp
 		src/Engine/shaders/ShaderProgram.h
 		src/Engine/shaders/ShaderProgram.h
+        src/Engine/shaders/StaticShader.cpp
+        src/Engine/shaders/StaticShader.h
+		src/Engine/textures/ModelTexture.cpp
+		src/Engine/textures/ModelTexture.h
+		src/Engine/textures/ModelTexture.h
+		src/Engine/models/TexturedModel.cpp
+		src/Engine/models/TexturedModel.h
+		src/Engine/models/TexturedModel.h
 )
 
 # We need a CMAKE_DIR with some code to find external dependencies
@@ -106,3 +114,12 @@ if(WIN32)
 		"${PROJECT_SOURCE_DIR}/dlls"
 		$<TARGET_FILE_DIR:${PROJECT_NAME}>)
 endif()
+
+# Copy assets and shaders
+if(WIN32)
+	add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy_directory
+			"${PROJECT_SOURCE_DIR}/res"
+			"$<TARGET_FILE_DIR:${PROJECT_NAME}>/res")
+endif()
+

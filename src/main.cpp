@@ -10,7 +10,16 @@ const int WINDOW_HEIGHT=768;
 
 starlight::Loader *loader;
 starlight::Renderer *renderer;
+
+starlight::StaticShader *shader;
+
+const std::string VERTEXFILE="res/shaders/Basic.vert";
+const std::string FRAGMENTFILE="res/shaders/Basic.frag";
+
+
 starlight::RawModel model;
+starlight::ModelTexture *texture;
+starlight::TexturedModel *texturedModel;
 
 float vertices[]={
         //left bottom triangle
@@ -21,6 +30,13 @@ float vertices[]={
         0.5f,-0.5f,0.0f,
         0.5f,0.5f,0.0f,
         -0.5f,0.5f,0.0f
+};
+
+float textureCoords[]={
+        0,0,
+        0,1,
+        1,1,
+        1,0,
 };
 
 int init(){
@@ -58,14 +74,23 @@ int init(){
 int load(){
     loader=new starlight::Loader();
     renderer=new starlight::Renderer();
+
+    shader=new starlight::StaticShader(VERTEXFILE,FRAGMENTFILE);
+
     int length=sizeof(vertices)/sizeof(vertices[0]);
-    model=loader->loadToVao(vertices,length);
+    int textureCoords_length=sizeof(textureCoords)/sizeof(textureCoords[0]);
+    model=loader->loadToVao(vertices,length,textureCoords,textureCoords_length);
+    texture=new starlight::ModelTexture(loader->loadTexture("res/popcat.png"));
+    texturedModel=new starlight::TexturedModel(model,*texture);
+
+
     return true;
 }
 int render(){
     renderer->prepare();
-    renderer->render(model);
-    std::cout<<glGetError()<<"\n";
+    shader->start();
+    renderer->render(*texturedModel);
+    shader->stop();
     return true;
 }
 int update(){
@@ -89,6 +114,6 @@ int main(){
     glfwTerminate();
     delete loader;
     delete renderer;
-
+    delete shader;
     return 0;
 }

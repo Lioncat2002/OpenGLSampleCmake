@@ -4,15 +4,16 @@
 
 #pragma once
 
-#include "RawModel.h"
+#include "Engine/models/RawModel.h"
 #include "glad/glad.h"
+#include "Engine/models/TexturedModel.h"
 
 namespace starlight{
 
         class Renderer {
         public:
             void prepare();
-            void render(RawModel model);
+            void render(TexturedModel texturedModel);
         };
 
 } // starlight
