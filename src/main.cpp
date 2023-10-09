@@ -84,7 +84,7 @@ int load(){
     int textureCoords_length=sizeof(textureCoords)/sizeof(textureCoords[0]);
 
     model=loader->loadToVao(vertices,length,indices,indices_length,textureCoords,textureCoords_length);
-    texture=new starlight::ModelTexture(loader->loadTexture("res/popcat.png"));
+    texture=new starlight::ModelTexture(loader->loadTexture("res/tile_0040.png"));
     texturedModel=new starlight::TexturedModel(model,*texture);
 
 
