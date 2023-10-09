@@ -13,7 +13,7 @@ namespace starlight {
     void StaticShader::bindAttributes() {
         bindAttribute(0,"position");
         bindAttribute(1,"textureCoords");
-        //ShaderProgram::bindAttributes();
+        ShaderProgram::bindAttributes();
     }
 
 } // starlight

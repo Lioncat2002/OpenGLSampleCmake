@@ -26,10 +26,12 @@ float vertices[]={
         -0.5f,0.5f,0.0f,
         -0.5f,-0.5f,0.0f,
         0.5f,-0.5f,0.0f,
-        //right top triangle
-        0.5f,-0.5f,0.0f,
         0.5f,0.5f,0.0f,
-        -0.5f,0.5f,0.0f
+};
+
+int indices[]={
+        0,1,3,
+        3,1,2,
 };
 
 float textureCoords[]={
@@ -78,8 +80,10 @@ int load(){
     shader=new starlight::StaticShader(VERTEXFILE,FRAGMENTFILE);
 
     int length=sizeof(vertices)/sizeof(vertices[0]);
+    int indices_length=sizeof(indices)/sizeof (indices[0]);
     int textureCoords_length=sizeof(textureCoords)/sizeof(textureCoords[0]);
-    model=loader->loadToVao(vertices,length,textureCoords,textureCoords_length);
+
+    model=loader->loadToVao(vertices,length,indices,indices_length,textureCoords,textureCoords_length);
     texture=new starlight::ModelTexture(loader->loadTexture("res/popcat.png"));
     texturedModel=new starlight::TexturedModel(model,*texture);
 
@@ -115,5 +119,7 @@ int main(){
     delete loader;
     delete renderer;
     delete shader;
+    delete texture;
+    delete texturedModel;
     return 0;
 }

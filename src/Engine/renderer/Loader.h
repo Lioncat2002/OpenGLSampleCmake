@@ -18,7 +18,7 @@ namespace starlight{
 
         public:
             unsigned int loadTexture(std::string filename);
-            RawModel loadToVao(float *positions,int positions_len,float *textureCoords, int textures_len);
+            RawModel loadToVao(float *positions,int positions_len,int *indices,int indices_len,float *textureCoords, int textures_len);
             ~Loader();
         private:
             unsigned int createVao();

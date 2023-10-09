@@ -18,7 +18,8 @@ namespace starlight {
         glEnableVertexAttribArray(1);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,texturedModel.getTexture().getId());
-        glDrawArrays(GL_TRIANGLES,0,model.getVertexCount());
+        glDrawElements(GL_TRIANGLES,model.getVertexCount(),GL_UNSIGNED_INT, nullptr);
+        //glDrawArrays(GL_TRIANGLES,0,model.getVertexCount());
         glBindVertexArray(0);
         glEnableVertexAttribArray(1);
     }

@@ -6,12 +6,13 @@
 #include "Loader.h"
 
 namespace starlight {
-    RawModel Loader::loadToVao(float *positions,int positions_len,float *textureCoords, int textures_len) {
+    RawModel Loader::loadToVao(float *positions,int positions_len,int *indices,int indices_len,float *textureCoords, int textures_len) {
         int vaoId=createVao();
+        bindIndicesBuffer(indices,indices_len);
         storeDataInAttributeList(3,0,positions,positions_len);
         storeDataInAttributeList(2,1,textureCoords,textures_len);
         unbindVao();
-        return {vaoId, positions_len/3};
+        return {vaoId, indices_len};
     }
 
     unsigned int Loader::createVao() {
