@@ -41,6 +41,9 @@ add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
 		src/Engine/models/TexturedModel.cpp
 		src/Engine/models/TexturedModel.h
 		src/Engine/models/TexturedModel.h
+        src/Engine/utils/Math.cpp
+        src/Engine/utils/Math.h
+		src/Engine/utils/Math.h
 )
 
 # We need a CMAKE_DIR with some code to find external dependencies

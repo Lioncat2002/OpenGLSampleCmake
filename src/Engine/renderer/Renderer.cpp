@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Renderer.h"
+#include "glad.h"
 
 namespace starlight {
     void Renderer::prepare() {

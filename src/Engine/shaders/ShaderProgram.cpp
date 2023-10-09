@@ -6,21 +6,24 @@
 
 #include <utility>
 #include "glad.h"
+#include "detail/type_mat4x4.hpp"
+#include "gtc/type_ptr.hpp"
 
 namespace starlight {
 
     ShaderProgram::ShaderProgram(std::string VERTEXFILE, std::string FRAGMENTFILE) {
-        vertexShaderId= loadShader(VERTEXFILE,GL_VERTEX_SHADER);
-        fragmentShaderId= loadShader(FRAGMENTFILE,GL_FRAGMENT_SHADER);
+        vertexShaderId= loadShader(std::move(VERTEXFILE),GL_VERTEX_SHADER);
+        fragmentShaderId= loadShader(std::move(FRAGMENTFILE),GL_FRAGMENT_SHADER);
         programId=glCreateProgram();
         glAttachShader(programId,vertexShaderId);
         glAttachShader(programId,fragmentShaderId);
-
+        bindAttributes();
         glLinkProgram(programId);
         glValidateProgram(programId);
-
-        bindAttributes();
+        getAllUniformLocations();
     }
+
+
 
     int ShaderProgram::loadShader(std::string filename, int type) {
 
@@ -42,15 +45,14 @@ namespace starlight {
         int shaderId=glCreateShader(type);
         const char* src_str = src.c_str();
 
-        glShaderSource(shaderId,1,&src_str, NULL);
+        glShaderSource(shaderId,1,&src_str, nullptr);
         glCompileShader(shaderId);
 
         int success;
         char infoLog[512];
         glGetShaderiv(shaderId, GL_COMPILE_STATUS, &success);
-        std::cout<<success<<"\n";
         if (!success) {
-            glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
+            glGetShaderInfoLog(shaderId, 512, nullptr, infoLog);
             std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog;
             std::exit(-1);
         }
@@ -81,5 +83,31 @@ namespace starlight {
     void ShaderProgram::bindAttributes() {
 
     }
+
+    int ShaderProgram::getUniformLocation(std::string uniformName) {
+        return glGetUniformLocation(programId,uniformName.c_str());
+    }
+
+    void ShaderProgram::getAllUniformLocations() {
+
+    }
+
+    void ShaderProgram::loadFloat(int location, float value) {
+        glUniform1f(location,value);
+    }
+
+    void ShaderProgram::loadVector(int location, glm::vec3 vector) {
+        glUniform3f(location,vector.x,vector.y,vector.z);
+    }
+
+    void ShaderProgram::loadBool(int location, bool value) {
+        float toLoad=value ? 1 : 0;//no support for native bools
+        glUniform1f(location,toLoad);
+    }
+
+    void ShaderProgram::loadMatrix(int location, glm::mat4 matrix) {
+        glUniformMatrix4fv(location, 1, false, glm::value_ptr(matrix));
+    }
+
 
 } // starlight

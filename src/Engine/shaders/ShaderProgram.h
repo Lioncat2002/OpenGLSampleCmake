@@ -7,6 +7,8 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "vec3.hpp"
+#include "detail/type_mat.hpp"
 
 namespace starlight {
 
@@ -14,6 +16,17 @@ namespace starlight {
     protected:
         virtual void bindAttributes();
         void bindAttribute(int attribute, const char *variable);
+
+        //Uniform locations
+        int getUniformLocation(std::string uniformName);
+
+        virtual void getAllUniformLocations();
+
+        //Uniform loaders
+        void loadFloat(int location,float value);
+        void loadVector(int location, glm::vec3 vector);
+        void loadBool(int location,bool value);
+        void loadMatrix(int location, glm::mat4 matrix);
     private:
         int programId;
         int vertexShaderId;

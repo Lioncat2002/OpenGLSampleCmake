@@ -5,8 +5,8 @@
 #pragma once
 
 #include "Engine/models/RawModel.h"
-#include "glad/glad.h"
 #include "Engine/models/TexturedModel.h"
+
 
 namespace starlight{
 
