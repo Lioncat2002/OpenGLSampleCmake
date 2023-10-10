@@ -85,7 +85,7 @@ int load(){
     texture=new starlight::ModelTexture(loader->loadTexture("res/tile_0040.png"));
     texturedModel=new starlight::TexturedModel(model,*texture);
 
-    entity=new starlight::Entity(*texturedModel, {0,0,1},{0,0,0},1.0f);
+    entity=new starlight::Entity(*texturedModel, {0,0,-10},{0,0,0},1.0f);
 
     shader=new starlight::StaticShader(VERTEXFILE,FRAGMENTFILE);
     renderer=new starlight::Renderer(shader);

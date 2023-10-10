@@ -20,7 +20,7 @@ namespace starlight{
             float FAR_PLANE;
             glm::mat4 projectionMatrix;
         public:
-            Renderer(StaticShader *shader);
+            explicit Renderer(StaticShader *shader);
             void prepare();
             void render(Entity entity,StaticShader *shader);
         private:

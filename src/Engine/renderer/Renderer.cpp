@@ -19,9 +19,10 @@ namespace starlight {
 
 
         //std::cout<<"pussen"<<projectionMatrix[2][3];
-        /*shader->start();
+        createProjectionMatrix();
+        shader->start();
         shader->loadProjectionMatrix(projectionMatrix);
-        shader->stop();*/
+        shader->stop();
     }
 
     void Renderer::prepare() {
@@ -37,8 +38,6 @@ namespace starlight {
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
         glm::mat4 transformationMatrix=Math::createTransformationMatrix(entity.getPosition(),entity.getRotation(),entity.getScale());
-        createProjectionMatrix();
-        shader->loadProjectionMatrix(projectionMatrix);
         shader->loadTransformationMatrix(transformationMatrix);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,texturedModel.getTexture().getId());
@@ -50,18 +49,18 @@ namespace starlight {
 
     void Renderer::createProjectionMatrix() {
         float aspectRatio=1024.0f/768.0f;
-        //projectionMatrix=glm::perspective(glm::radians(60.0f),aspectRatio,0.1f,1000.0f);
-        float y_scale=(1.0f/glm::tan(glm::radians(70.0f/2.0f)))*aspectRatio;
-        float x_scale=y_scale/aspectRatio;
+        projectionMatrix=glm::perspective(glm::radians(60.0f),aspectRatio,0.1f,1000.0f);
+        //float y_scale=(1.0f/glm::tan(glm::radians(70.0f/2.0f)))*aspectRatio;
+        //float x_scale=y_scale/aspectRatio;
 
-        float frustrum_length=FAR_PLANE-NEAR_PLANE;
-        projectionMatrix=glm::mat4 {0};
-        projectionMatrix[0][0]=x_scale;
-        projectionMatrix[1][1]=y_scale;
-        projectionMatrix[2][2]=-((FAR_PLANE+NEAR_PLANE)/frustrum_length);
-        projectionMatrix[2][3]=-1;
-        projectionMatrix[3][2]=-((2*NEAR_PLANE*FAR_PLANE)/frustrum_length);
-        projectionMatrix[3][3]=0;
+        //float frustrum_length=FAR_PLANE-NEAR_PLANE;
+        //projectionMatrix=glm::mat4 {0};
+        //projectionMatrix[0][0]=x_scale;
+        //projectionMatrix[1][1]=y_scale;
+        //projectionMatrix[2][2]=-((FAR_PLANE+NEAR_PLANE)/frustrum_length);
+        //projectionMatrix[2][3]=-1;
+        //projectionMatrix[3][2]=-((2*NEAR_PLANE*FAR_PLANE)/frustrum_length);
+        //projectionMatrix[3][3]=0;
     }
 
 
