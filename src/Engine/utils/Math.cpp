@@ -17,4 +17,9 @@ namespace starlight {
         matrix = glm::scale(matrix, glm::vec3(scale));
         return matrix;
     }
+
+    glm::mat4 Math::createViewMatrix(Camera camera) {
+        glm::mat4 viewMatrix=glm::lookAt(camera.getPosition(),camera.getPosition()+glm::vec3{0.0f,0.0f,-1.0f},{0.0f,1.0f,0.0f});
+        return viewMatrix;
+    }
 } // starlight

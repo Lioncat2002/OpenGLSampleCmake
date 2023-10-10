@@ -23,6 +23,7 @@ namespace starlight {
     void StaticShader::getAllUniformLocations() {
         location_transformationMatrix=ShaderProgram::getUniformLocation("transformationMatrix");
         location_projectionMatrix=ShaderProgram::getUniformLocation("projectionMatrix");
+        location_viewMatrix=ShaderProgram::getUniformLocation("viewMatrix");
         ShaderProgram::getAllUniformLocations();
     }
 
@@ -33,6 +34,10 @@ namespace starlight {
 
     void StaticShader::loadProjectionMatrix(glm::mat4 matrix) {
         ShaderProgram::loadMatrix(location_projectionMatrix,matrix);
+    }
+
+    void StaticShader::loadViewMatrix(Camera camera) {
+
     }
 
 
