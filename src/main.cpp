@@ -20,6 +20,7 @@ const std::string FRAGMENTFILE="res/shaders/Basic.frag";
 starlight::RawModel model;
 starlight::ModelTexture *texture;
 starlight::TexturedModel *texturedModel;
+starlight::Entity *entity;
 
 float vertices[]={
         //left bottom triangle
@@ -75,9 +76,6 @@ int init(){
 
 int load(){
     loader=new starlight::Loader();
-    renderer=new starlight::Renderer();
-
-    shader=new starlight::StaticShader(VERTEXFILE,FRAGMENTFILE);
 
     int length=sizeof(vertices)/sizeof(vertices[0]);
     int indices_length=sizeof(indices)/sizeof (indices[0]);
@@ -87,13 +85,16 @@ int load(){
     texture=new starlight::ModelTexture(loader->loadTexture("res/tile_0040.png"));
     texturedModel=new starlight::TexturedModel(model,*texture);
 
+    entity=new starlight::Entity(*texturedModel, {0,0,1},{0,0,0},1.0f);
 
+    shader=new starlight::StaticShader(VERTEXFILE,FRAGMENTFILE);
+    renderer=new starlight::Renderer(shader);
     return true;
 }
 int render(){
     renderer->prepare();
     shader->start();
-    renderer->render(*texturedModel);
+    renderer->render(*entity,shader);
     shader->stop();
     return true;
 }
@@ -121,5 +122,7 @@ int main(){
     delete shader;
     delete texture;
     delete texturedModel;
+    delete entity;
+
     return 0;
 }

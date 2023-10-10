@@ -18,5 +18,9 @@ namespace starlight {
         return texture;
     }
 
+    TexturedModel::TexturedModel() {
+
+    }
+
 
 } // starlight

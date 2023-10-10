@@ -15,6 +15,7 @@ namespace starlight {
         ModelTexture texture;
 
     public:
+        TexturedModel();
         TexturedModel(RawModel model, ModelTexture texture);
         RawModel getRawModel();
         ModelTexture getTexture();

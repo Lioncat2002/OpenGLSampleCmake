@@ -6,3 +6,4 @@
 #include "Engine/shaders/StaticShader.h"
 #include "Engine/textures/ModelTexture.h"
 #include "Engine/models/TexturedModel.h"
+#include "Engine/entities/Entity.h"

@@ -44,6 +44,8 @@ add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES}
         src/Engine/utils/Math.cpp
         src/Engine/utils/Math.h
 		src/Engine/utils/Math.h
+        src/Engine/entities/Entity.cpp
+        src/Engine/entities/Entity.h
 )
 
 # We need a CMAKE_DIR with some code to find external dependencies

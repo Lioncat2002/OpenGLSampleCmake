@@ -10,7 +10,8 @@
 namespace starlight {
 
     class Math {
-        static glm::mat4 createTransformationMatrix(glm::vec3 translation,glm::vec3 rotation,float scale);
+    public:
+        static glm::mat4 createTransformationMatrix(glm::vec3 translation, glm::vec3 rotation, float scale);
     };
 
 } // starlight

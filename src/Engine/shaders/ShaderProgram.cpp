@@ -8,6 +8,7 @@
 #include "glad.h"
 #include "detail/type_mat4x4.hpp"
 #include "gtc/type_ptr.hpp"
+#include "StaticShader.h"
 
 namespace starlight {
 
@@ -89,7 +90,7 @@ namespace starlight {
     }
 
     void ShaderProgram::getAllUniformLocations() {
-
+        std::cout<<"Parent class Uniform called\n";
     }
 
     void ShaderProgram::loadFloat(int location, float value) {
